@@ -1,0 +1,24 @@
+<ng-container *ngIf="control?.touched">
+    <div *ngFor="let error of control?.errors | keyvalue">
+        <!-- {{error.key}}
+        {{error.value | json}} -->
+        <div [ngSwitch]="error.key">
+            <div *ngSwitchCase="'required'" class="alert alert-danger d-flex align-items-center mt-1 mb-0 p-1" role="alert">
+                <i class="fa-solid fa-circle-exclamation me-1"></i> <small>Este campo es requerido.</small>
+            </div>
+            <div *ngSwitchCase="'minlength'" class="alert alert-danger d-flex align-items-center mt-1 mb-0 p-1" role="alert">
+                <i class="fa-solid fa-circle-exclamation me-1"></i> <small>Este campo debe tener mínimo {{error.value.requiredLength}} caracteres.</small>
+            </div>
+            <div *ngSwitchCase="'maxlength'" class="alert alert-danger d-flex align-items-center mt-1 mb-0 p-1" role="alert">
+                <i class="fa-solid fa-circle-exclamation me-1"></i> <small>Este campo debe tener máximo {{error.value.requiredLength}} caracteres.</small>
+            </div>
+            <div *ngSwitchCase="'pattern'" class="alert alert-danger d-flex align-items-center mt-1 mb-0 p-1" role="alert">
+                <i class="fa-solid fa-circle-exclamation me-1"></i> <small>Has introducido caracteres incorrectos.</small>
+            </div>
+            <div *ngSwitchCase="'email'" class="alert alert-danger d-flex align-items-center mt-1 mb-0 p-1" role="alert">
+                <i class="fa-solid fa-circle-exclamation me-1"></i> <small>Has un introducido un email incorrecto.</small>
+            </div>
+            <div *ngSwitchDefault class="alert alert-danger d-flex align-items-center mt-1 mb-0 p-1" role="alert">Validación desconocida.</div>
+        </div>
+    </div>
+</ng-container>

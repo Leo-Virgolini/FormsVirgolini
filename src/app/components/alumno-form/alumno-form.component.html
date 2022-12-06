@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <main>
+        <section>
+            <h2 class="text-primary">Registro de alumno</h2>
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+                <div class="row mb-3">
+                    <div class="col-xs-6 col-sm-3">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input formControlName="nombre" type="text" class="form-control" id="nombre" name="nombre" autocomplete="given-name" required placeholder="Nombre"
+                            [ngClass]="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['nombre'])"></app-error-helper>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3">
+                        <label for="apellido" class="form-label">Apellido:</label>
+                        <input formControlName="apellido" type="text" class="form-control" id="apellido" name="apellido" autocomplete="family-name" required placeholder="Apellido"
+                            [ngClass]="formulario.get('apellido')?.invalid && formulario.get('apellido')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['apellido'])"></app-error-helper>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="fechaNacimiento" class="form-label">Fecha de nacimiento:</label>
+                        <input formControlName="fechaNacimiento" type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" autocomplete="bday" required placeholder="dd/mm/aaaa"
+                            [ngClass]="formulario.get('fechaNacimiento')?.invalid && formulario.get('fechaNacimiento')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['fechaNacimiento'])"></app-error-helper>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="dni" class="form-label">DNI:</label>
+                        <input formControlName="dni" type="text" class="form-control" id="dni" name="dni" inputmode="numeric" required placeholder="DNI"
+                            [ngClass]="formulario.get('dni')?.invalid && formulario.get('dni')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['dni'])"></app-error-helper>
+                    </div>
+                </div>
+
+                <div formGroupName="direccion" class="row mb-3">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="provincia" class="form-label">Provincia:</label>
+                        <select formControlName="provincia" id="provincia" name="provincia" class="form-select" aria-label="Provincia" required>
+                            <option [selected]="true" hidden disabled>Selecciona provincia</option>
+                            <option value="Buenos Aires">Buenos Aires</option>
+                            <option value="Córdoba">Córdoba</option>
+                            <option value="Mendoza">Mendoza</option>
+                            <option value="Salta">Salta</option>
+                        </select>
+                        <app-error-helper [control]="$any(formulario.get('direccion.provincia'))"></app-error-helper>
+                        <!-- <input formControlName="provincia" type="text" class="form-control" id="provincia" name="provincia" autocomplete="address-level1" required placeholder="Buenos Aires"
+                            [ngClass]="formulario.get('direccion.provincia')?.invalid && formulario.get('direccion.provincia')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.get('direccion.provincia'))"></app-error-helper> -->
+                    </div>
+
+                    <div class="col-sm-6 col-md-3">
+                        <label for="localidad" class="form-label">Localidad:</label>
+                        <input formControlName="localidad" type="text" class="form-control" id="localidad" name="localidad" autocomplete="address-level2" required placeholder="Florida"
+                            [ngClass]="formulario.get('direccion.localidad')?.invalid && formulario.get('direccion.localidad')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.get('direccion.localidad'))"></app-error-helper>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="calle" class="form-label">Calle:</label>
+                        <input formControlName="calle" type="text" class="form-control" id="calle" name="calle" autocomplete="street-address" required placeholder="Calle 1234"
+                            [ngClass]="formulario.get('direccion.calle')?.invalid && formulario.get('direccion.calle')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.get('direccion.calle'))"></app-error-helper>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row mb-3">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="email" class="form-label">E-mail:</label>
+                        <input formControlName="email" type="email" class="form-control" id="email" name="email" autocomplete="email" required placeholder="email@ejemplo.com"
+                            [ngClass]="formulario.get('email')?.invalid && formulario.get('email')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['email'])"></app-error-helper>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <input formControlName="password" type="password" class="form-control" id="password" name="password" autocomplete="new-password" required placeholder="Contraseña"
+                            [ngClass]="formulario.get('password')?.invalid && formulario.get('password')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['password'])"></app-error-helper>
+                        <div class="form-text">
+                            La contraseña debe tener entre 4-20 caracteres y debe contener letras y números.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3">
+                        <label for="repeatPassword" class="form-label">Repetir contraseña:</label>
+                        <input formControlName="repeatPassword" type="password" class="form-control" id="repeatPassword" name="repeatPassword" autocomplete="new-password" required
+                            placeholder="Contraseña" [ngClass]="formulario.get('repeatPassword')?.invalid && formulario.get('repeatPassword')?.touched ? 'text-danger' : ''">
+                        <app-error-helper [control]="$any(formulario.controls['repeatPassword'])"></app-error-helper>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-1">
+                    <button type="submit" class="btn btn-lg btn-primary">Registrarse</button>
+                </div>
+
+            </form>
+
+            <app-spinner *ngIf="loading"></app-spinner>
+
+            <ng-container *ngIf="!loading && !formulario.valid && submitted">
+                <p class="text-danger fw-bold mt-5">Completa todos los campos correctamente.</p>
+            </ng-container>
+
+            <ng-container *ngIf="formulario.valid && !loading && submitted">
+                <p class="text-success fw-bold mt-5">
+                    Registro correcto.
+                </p>
+                <p class="mt-1 fw-bold">
+                    {{formulario.value | json}}
+                </p>
+            </ng-container>
+        </section>
+    </main>
+</div>
