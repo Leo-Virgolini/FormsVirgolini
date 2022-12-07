@@ -21,7 +21,7 @@ export class AlumnoFormComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nombre: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁ-Úá-ú ]+$'), Validators.minLength(2), Validators.maxLength(20)]],
       apellido: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁ-Úá-ú ]+$'), Validators.minLength(2), Validators.maxLength(20)]],
-      fechaNacimiento: ['', [Validators.required, Validators.pattern(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/), Validators.minLength(10), Validators.maxLength(10)]],
+      fechaNacimiento: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       dni: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6), Validators.maxLength(10)]],
       direccion: this.formBuilder.group({
         provincia: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
@@ -32,9 +32,8 @@ export class AlumnoFormComponent implements OnInit {
       password: ['', [Validators.required, Validators.pattern('^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9]+$'), Validators.minLength(4), Validators.maxLength(20)]],
       repeatPassword: ['', [Validators.required, Validators.pattern('^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9]+$'), Validators.minLength(4), Validators.maxLength(20)]]
     },
-      { validators: [this.passwordsMatchValidator] } // FormGroup Validators
+      { validators: [this.passwordsMatchValidator] } // NO FUNCIONA  FormGroup Validators
     );
-    // this.formulario.setValidators([this.passwordsMatchValidator]);
   }
 
   public passwordsMatchValidator() {
@@ -50,12 +49,10 @@ export class AlumnoFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
-
     this.formulario.markAllAsTouched();
     this.submitted = true;
     if (this.formulario.valid) {
       this.loading = true;
-
       setTimeout(() => {
         this.loading = false;
         console.log(this.formulario.value);
