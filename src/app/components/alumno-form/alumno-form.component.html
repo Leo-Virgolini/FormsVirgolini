@@ -49,9 +49,6 @@
                             <option value="Salta">Salta</option>
                         </select>
                         <app-error-helper [control]="$any(formulario.get('direccion.provincia'))"></app-error-helper>
-                        <!-- <input formControlName="provincia" type="text" class="form-control" id="provincia" name="provincia" autocomplete="address-level1" required placeholder="Buenos Aires"
-                            [ngClass]="formulario.get('direccion.provincia')?.invalid && formulario.get('direccion.provincia')?.touched ? 'text-danger' : ''">
-                        <app-error-helper [control]="$any(formulario.get('direccion.provincia'))"></app-error-helper> -->
                     </div>
 
                     <div class="col-sm-6 col-md-3">
@@ -60,6 +57,7 @@
                             [ngClass]="formulario.get('direccion.localidad')?.invalid && formulario.get('direccion.localidad')?.touched ? 'text-danger' : ''">
                         <app-error-helper [control]="$any(formulario.get('direccion.localidad'))"></app-error-helper>
                     </div>
+
                     <div class="col-sm-6 col-md-3">
                         <label for="calle" class="form-label">Calle:</label>
                         <input formControlName="calle" type="text" class="form-control" id="calle" name="calle" autocomplete="street-address" required placeholder="Calle 1234"

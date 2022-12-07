@@ -24,7 +24,7 @@ export class AlumnoFormComponent implements OnInit {
       fechaNacimiento: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       dni: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(6), Validators.maxLength(10)]],
       direccion: this.formBuilder.group({
-        provincia: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+        provincia: ['', [Validators.required]],
         localidad: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁ-Úá-ú0-9 ]+$'), Validators.minLength(4), Validators.maxLength(20)]],
         calle: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁ-Úá-ú0-9 ]+$'), Validators.minLength(2), Validators.maxLength(20)]]
       }),
