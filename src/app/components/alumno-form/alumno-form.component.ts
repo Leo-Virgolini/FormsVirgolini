@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alumno-form',
@@ -32,15 +32,15 @@ export class AlumnoFormComponent implements OnInit {
       password: ['', [Validators.required, Validators.pattern('^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9]+$'), Validators.minLength(4), Validators.maxLength(20)]],
       repeatPassword: ['', [Validators.required, Validators.pattern('^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9]+$'), Validators.minLength(4), Validators.maxLength(20)]]
     },
-      { validators: [this.passwordsMatchValidator] } // NO FUNCIONA  FormGroup Validators
-    );
+      { validators: [this.passwordsMatchValidator()] }
+    )
   }
 
-  public passwordsMatchValidator() {
-    return (formGroup: FormGroup) => {
-      console.log(this.formulario.controls['password'].value);
-      console.log(this.formulario.controls['repeatPassword'].value);
-      if (this.formulario.controls['password'].value !== this.formulario.controls['repeatPassword'].value)
+  public passwordsMatchValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      console.log(this.formulario?.controls['password']?.value);
+      console.log(this.formulario?.controls['repeatPassword']?.value);
+      if (this.formulario?.controls['password']?.value !== this.formulario?.controls['repeatPassword']?.value)
         return {
           passwordMismatch: true
         }
