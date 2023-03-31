@@ -59,10 +59,7 @@
                             'is-valid': provincia.valid && provincia.touched
                         }">
                             <option [selected]="true" hidden disabled>Selecciona provincia</option>
-                            <option value="Buenos Aires">Buenos Aires</option>
-                            <option value="Córdoba">Córdoba</option>
-                            <option value="Mendoza">Mendoza</option>
-                            <option value="Salta">Salta</option>
+                            <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
                         </select>
                         <app-error-helper [control]="provincia"></app-error-helper>
                     </div>
