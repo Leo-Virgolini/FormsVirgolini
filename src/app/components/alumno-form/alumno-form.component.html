@@ -11,7 +11,7 @@
                             autocomplete="given-name" placeholder="Nombre" [ngClass]="{
                                 'is-invalid': nombre.invalid && nombre.touched,
                                 'is-valid': nombre.valid && nombre.touched
-                        }">
+                            }">
                         <app-error-helper [control]="nombre"></app-error-helper>
                     </div>
 
@@ -21,7 +21,7 @@
                             autocomplete="family-name" placeholder="Apellido" [ngClass]="{
                                 'is-invalid': apellido.invalid && apellido.touched,
                                 'is-valid': apellido.valid && apellido.touched
-                        }">
+                            }">
                         <app-error-helper [control]="apellido"></app-error-helper>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                             name="fechaNacimiento" autocomplete="bday" placeholder="dd/mm/aaaa" [ngClass]="{
                                 'is-invalid': fechaNacimiento.invalid && fechaNacimiento.touched,
                                 'is-valid': fechaNacimiento.valid && fechaNacimiento.touched
-                        }">
+                            }">
                         <app-error-helper [control]="fechaNacimiento"></app-error-helper>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                             inputmode="numeric" placeholder="DNI" [ngClass]="{
                                 'is-invalid': dni.invalid && dni.touched,
                                 'is-valid': dni.valid && dni.touched
-                        }">
+                            }">
                         <app-error-helper [control]="dni"></app-error-helper>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             aria-label="Provincia" [ngClass]="{
                             'is-invalid': provincia.invalid && provincia.touched,
                             'is-valid': provincia.valid && provincia.touched
-                    }">
+                        }">
                             <option [selected]="true" hidden disabled>Selecciona provincia</option>
                             <option value="Buenos Aires">Buenos Aires</option>
                             <option value="Córdoba">Córdoba</option>
@@ -73,7 +73,7 @@
                             name="localidad" autocomplete="address-level2" placeholder="Florida" [ngClass]="{
                                 'is-invalid': localidad.invalid && localidad.touched,
                                 'is-valid': localidad.valid && localidad.touched
-                        }">
+                            }">
                         <app-error-helper [control]="localidad"></app-error-helper>
                     </div>
 
@@ -83,7 +83,7 @@
                             autocomplete="street-address" placeholder="Calle 1234" [ngClass]="{
                                 'is-invalid': calle.invalid && calle.touched,
                                 'is-valid': calle.valid && calle.touched
-                        }">
+                            }">
                         <app-error-helper [control]="calle"></app-error-helper>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                             autocomplete="email" placeholder="email@ejemplo.com" [ngClass]="{
                                 'is-invalid': email.invalid && email.touched,
                                 'is-valid': email.valid && email.touched
-                        }">
+                            }">
                         <app-error-helper [control]="email"></app-error-helper>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                             name="password" autocomplete="new-password" placeholder="Contraseña" [ngClass]="{
                                 'is-invalid': password.invalid && password.touched,
                                 'is-valid': password.valid && password.touched
-                        }">
+                            }">
                         <app-error-helper [control]="password"></app-error-helper>
                         <div class="form-text">
                             La contraseña debe tener entre 4-20 caracteres y debe contener letras y números.
@@ -121,7 +121,7 @@
                             name="repeatPassword" autocomplete="new-password" placeholder="Contraseña" [ngClass]="{
                                 'is-invalid': repeatPassword.invalid && repeatPassword.touched,
                                 'is-valid': repeatPassword.valid && repeatPassword.touched
-                        }">
+                            }">
                         <app-error-helper [control]="repeatPassword"></app-error-helper>
                     </div>
                 </div>
