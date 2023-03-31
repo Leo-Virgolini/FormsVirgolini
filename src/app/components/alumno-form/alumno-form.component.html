@@ -8,7 +8,7 @@
                     <div class="col-xs-6 col-sm-3">
                         <label for="nombre" class="form-label">Nombre:</label>
                         <input formControlName="nombre" type="text" class="form-control" id="nombre" name="nombre"
-                            autocomplete="given-name" placeholder="Nombre" [ngClass]="{
+                            autofocus autocomplete="given-name" placeholder="Nombre" [ngClass]="{
                                 'is-invalid': nombre.invalid && nombre.touched,
                                 'is-valid': nombre.valid && nombre.touched
                             }">

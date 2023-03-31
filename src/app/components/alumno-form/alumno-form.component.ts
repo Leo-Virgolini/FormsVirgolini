@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
@@ -23,7 +23,7 @@ export class AlumnoFormComponent implements OnInit {
   public password: FormControl = new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9]+$'), Validators.minLength(4), Validators.maxLength(20)]);
   public repeatPassword: FormControl = new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9]+$'), Validators.minLength(4), Validators.maxLength(20)]);
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private el: ElementRef) {
     this.loading = false;
     this.submitted = false;
 
@@ -70,6 +70,14 @@ export class AlumnoFormComponent implements OnInit {
         console.log(this.formulario.value);
         console.log(this.formulario.valid);
       }, 500);
+    } else {
+      for (const key of Object.keys(this.formulario.controls)) { // focus on invalid
+        if (this.formulario.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+        }
+      }
     }
   }
 
