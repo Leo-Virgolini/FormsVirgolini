@@ -1,4 +1,4 @@
-<ng-container *ngIf="control?.touched">
+<ng-container *ngIf="control?.touched && control?.invalid">
     <div *ngFor="let error of control?.errors | keyvalue">
         <!-- {{error.key}}
         {{error.value | json}} -->
